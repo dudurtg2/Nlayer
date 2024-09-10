@@ -17,23 +17,19 @@ public class ProdutoFacade {
         this.produtoApplication.adicionar(produto);
     }
 
-    public void remover(int id) {
-        this.produtoApplication.remover(id);
+    public void remover(int DDD) {
+        this.produtoApplication.remover(DDD);
     }
 
-    public Produto buscarPorId(int id) {
-        return this.produtoApplication.buscarPorId(id);
+    public Produto buscarPorDDD(int DDD) {
+        return this.produtoApplication.buscarPorDDD(DDD);
     }
 
     public ArrayList<Produto> buscarTodos() {
         return this.produtoApplication.buscarTodos();
     }
 
-    public float vender(int id, int quantidade) {
-        return this.produtoApplication.vender(id, quantidade);
-    }
-
-    public void atualizarProduto(int id, Produto produto) {
-        this.produtoApplication.atualizarProduto(id, produto);
+    public void atualizarProduto(int DDD, Produto produto) {
+        this.produtoApplication.atualizarProduto(DDD, produto);
     }
 }

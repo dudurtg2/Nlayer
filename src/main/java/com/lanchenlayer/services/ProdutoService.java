@@ -23,7 +23,7 @@ public class ProdutoService {
     public boolean salvarImagem(Produto produto) {
         Path path = Paths.get(produto.getImagem());
 
-        Path pastaDestino = Paths.get(String.format("%s%d.%s", caminhoDestino, produto.getId(), getFileExtension(produto.getImagem())));
+        Path pastaDestino = Paths.get(String.format("%s%d.%s", caminhoDestino, produto.getDDD(), getFileExtension(produto.getImagem())));
 
         if (Files.exists(path)) {
             try {
@@ -38,18 +38,18 @@ public class ProdutoService {
         return false;
     }
 
-    private String buscarCaminhoArquivoPorId(int id) {
+    private String buscarCaminhoArquivoPorDDD(int DDD) {
         File diretorio = new File(caminhoDestino);
         File[] matches = diretorio.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String name) {
-                return name.startsWith(String.valueOf(id));
+                return name.startsWith(String.valueOf(DDD));
             }
         });
         return Arrays.stream(matches).findFirst().get().getAbsolutePath();
     }
 
-    public void removerImagem(int id) {
-        Path path = Paths.get(buscarCaminhoArquivoPorId(id));
+    public void removerImagem(int DDD) {
+        Path path = Paths.get(buscarCaminhoArquivoPorDDD(DDD));
 
         try {
             Files.deleteIfExists(path);
@@ -59,7 +59,7 @@ public class ProdutoService {
     }
 
     public void atualizarImagem(Produto produto) {
-        removerImagem(produto.getId());
+        removerImagem(produto.getDDD());
         salvarImagem(produto);
     }
 }

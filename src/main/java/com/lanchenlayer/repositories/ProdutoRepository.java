@@ -11,16 +11,16 @@ public class ProdutoRepository {
         produtos.add(produto);
     }
 
-    public void remover(int id) {
-        produtos.removeIf(produto -> produto.getId() == id);
+    public void remover(int DDD) {
+        produtos.removeIf(produto -> produto.getDDD() == DDD);
     }
 
-    private Produto filtrarProduto(int id) {
-        return produtos.stream().filter(p -> p.getId() == id).findFirst().get();
+    private Produto filtrarProduto(int DDD) {
+        return produtos.stream().filter(p -> p.getDDD() == DDD).findFirst().get();
     }
 
-    public Produto buscarPorId(int id) {
-        Produto produtoInDb = filtrarProduto(id);
+    public Produto buscarPorDDD(int DDD) {
+        Produto produtoInDb = filtrarProduto(DDD);
 
         return produtoInDb;
     }
@@ -29,11 +29,10 @@ public class ProdutoRepository {
         return produtos;
     }
 
-    public void atualizarProduto(int id, Produto produto) {
-        Produto produtoInDb = filtrarProduto(id);
+    public void atualizarProduto(int DDD, Produto produto) {
+        Produto produtoInDb = filtrarProduto(DDD);
 
-        produtoInDb.setDescricao(produto.getDescricao());
-        produtoInDb.setValor(produto.getValor());
+        produtoInDb.setEstado(produto.getEstado());
         produtoInDb.setImagem(produto.getImagem());
     }
 }

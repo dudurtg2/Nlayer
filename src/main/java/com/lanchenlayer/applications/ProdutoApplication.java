@@ -24,26 +24,21 @@ public class ProdutoApplication {
         this.produtoService.salvarImagem(produto);
     }
 
-    public void remover(int id) {
-        this.produtoRepository.remover(id);
-        this.produtoService.removerImagem(id);
+    public void remover(int DDD) {
+        this.produtoRepository.remover(DDD);
+        this.produtoService.removerImagem(DDD);
     }
 
-    public Produto buscarPorId(int id) {
-        return this.produtoRepository.buscarPorId(id);
+    public Produto buscarPorDDD(int DDD) {
+        return this.produtoRepository.buscarPorDDD(DDD);
     }
 
     public ArrayList<Produto> buscarTodos() {
         return this.produtoRepository.buscarTodos();
     }
 
-    public float vender(int id, int quantidade) {
-        Produto produto = this.produtoRepository.buscarPorId(id);
-        return produto.vender(quantidade);
-    }
-
-    public void atualizarProduto(int id, Produto produto) {
-        this.produtoRepository.atualizarProduto(id, produto);
+    public void atualizarProduto(int DDD, Produto produto) {
+        this.produtoRepository.atualizarProduto(DDD, produto);
         this.produtoService.atualizarImagem(produto);
     }
 }

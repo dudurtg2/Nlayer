@@ -28,8 +28,16 @@ public class Console {
     }
 
     public static void inicializarProdutos() {
-        produtoFacade.adicionar(new Produto(1, "Cachorro quente", 4.00f, "C:\\Users\\aluno\\imagens\\cachorroquente.jpg"));
-        produtoFacade.adicionar(new Produto(2, "X-Salada", 5.00f, "C:\\Users\\aluno\\imagens\\xsalada.jpg"));
+        produtoFacade.adicionar(new Produto(61, "Brasilia", "C:\\Users\\aluno\\imagens\\Brasilia.jpg"));
+        produtoFacade.adicionar(new Produto(71, "Salvador", "C:\\Users\\aluno\\imagens\\Salvador.jpg"));
+        produtoFacade.adicionar(new Produto(11, "São Paulo", "C:\\Users\\aluno\\imagens\\SaoPaulo.jpg"));
+        produtoFacade.adicionar(new Produto(21, "Rio de Janeiro", "C:\\Users\\aluno\\imagens\\RioDeJaneiro.jpg"));
+        produtoFacade.adicionar(new Produto(32, "Juiz de Fora", "C:\\Users\\aluno\\imagens\\JuizDeFora.jpg"));
+        produtoFacade.adicionar(new Produto(19, "Campinas", "C:\\Users\\aluno\\imagens\\Campinas.jpg"));
+        produtoFacade.adicionar(new Produto(27, "Vitoria", "C:\\Users\\aluno\\imagens\\Vitoria.jpg"));
+        produtoFacade.adicionar(new Produto(31, "Belo Horizonte", "C:\\Users\\aluno\\imagens\\BeloHorizonte.jpg"));
+        
+
     }
 
     public static void listarProdutos() {
@@ -38,33 +46,30 @@ public class Console {
         ArrayList<Produto> produtos = produtoFacade.buscarTodos();
 
         produtos.forEach(c -> {
-            System.out.println(c.getId()+"   |     " +c.getDescricao() + "   |     " + c.getValor());
+            System.out.println(c.getDDD() + "   |     " + c.getEstado());
         });
     }
 
     public static void cadastrarProduto() {
-        System.out.println("Informe o ID do produto: ");
+        System.out.println("Informe o DDD do estado: ");
         int id = scanner.nextInt();
 
-        System.out.println("Informe a descrição do produto: ");
-        String descricao = scanner.next();
+        System.out.println("Informe o nome do estado: ");
+        String estado = scanner.next();
 
-        System.out.println("Informe o valor do produto: ");
-        float valor = scanner.nextFloat();
-
-        System.out.println("Informe o caminho da imagem do produto: ");
+        System.out.println("Informe o caminho da imagem da bandeira: ");
         String imagem = scanner.next();
 
-        Produto produto = new Produto(id, descricao, valor, imagem);
+        Produto produto = new Produto(id, estado, imagem);
         produtoFacade.adicionar(produto);
     }
 
     public static void exibirMenu() {
-        System.out.println("\n1 - Novo produto");
-        System.out.println("2 - Atualizar produto");
-        System.out.println("3 - Listar produtos");
-        System.out.println("4 - Vender");
-        System.out.println("5 - Remover produto");
+        System.out.println("\n1 - Novo estado");
+        System.out.println("2 - Atualizar estado");
+        System.out.println("3 - Listar estados");
+        System.out.println("4 - Buscar estado pelo DDD");
+        System.out.println("5 - Remover estado");
         System.out.println("6 - Sair");
     }
 
@@ -73,35 +78,30 @@ public class Console {
         return scanner.nextInt();
     }
 
-    public static void venderProduto() {
-        System.out.println("Informe o produto desejada: ");
+    public static void buscarPorDDD() {
+        System.out.println("Informe o DDD desejada: ");
         int id = scanner.nextInt();
 
-        System.out.println("Informe a quantidade desejada: ");
-        int quantidade = scanner.nextInt();
 
-        System.out.println("Total: " + produtoFacade.vender(id, quantidade));
+        System.out.println("Estado: " + produtoFacade.buscarPorDDD(id).getEstado());
     }
 
     private static void atualizarProduto() {
-        System.out.println("Informe o ID do produto que deseja atualizar: ");
-        int id = scanner.nextInt();
+        System.out.println("Informe o DDD do produto que deseja atualizar: ");
+        int DDD = scanner.nextInt();
 
-        System.out.println("Informe a nova descrição do produto: ");
+        System.out.println("Informe a novo nome do estado: ");
         String descricao = scanner.next();
-
-        System.out.println("Informe o novo valor do produto: ");
-        float valor = scanner.nextFloat();
 
         System.out.println("Informe o novo caminho da imagem do produto: ");
         String imagem = scanner.next();
 
-        Produto produto = new Produto(id, descricao, valor, imagem);
-        produtoFacade.atualizarProduto(id, produto);
+        Produto produto = new Produto(DDD, descricao,  imagem);
+        produtoFacade.atualizarProduto(DDD, produto);
     }
 
     public static void removerProduto() {
-        System.out.println("Informe o ID do produto que deseja remover: ");
+        System.out.println("Informe o DDD do estado que deseja remover: ");
         int id = scanner.nextInt();
 
         produtoFacade.remover(id);
@@ -124,7 +124,7 @@ public class Console {
                     listarProdutos();
                     break;
                 case 4:
-                    venderProduto();
+                    buscarPorDDD();
                     break;
                 case 5:
                     removerProduto();

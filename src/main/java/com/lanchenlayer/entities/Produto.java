@@ -1,40 +1,25 @@
 package com.lanchenlayer.entities;
 
 public class Produto {
-    private int id;
-    private String descricao;
-    private float valor;
+
+    private int DDD;
+    private String estado;
     private String imagem;
 
-    public Produto(int id, String descricao, float valor, String imagem) {
-        this.id = id;
-        this.descricao = descricao;
-        this.valor = valor;
-        this.imagem = imagem;
+    public int getDDD() {
+        return DDD;
     }
 
-    public int getId() {
-        return id;
+    public void setDDD(int DDD) {
+        this.DDD = DDD;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getEstado() {
+        return estado;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getImagem() {
@@ -45,7 +30,10 @@ public class Produto {
         this.imagem = imagem;
     }
 
-    public float vender(int quantidade) {
-        return this.valor * quantidade;
+    public Produto(int DDD, String estado, String imagem) {
+        this.DDD = DDD;
+        this.estado = estado;
+        this.imagem = imagem;
+
     }
 }
