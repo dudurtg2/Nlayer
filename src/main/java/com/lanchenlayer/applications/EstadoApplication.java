@@ -1,44 +1,44 @@
 package com.lanchenlayer.applications;
 
-import com.lanchenlayer.entities.Produto;
-import com.lanchenlayer.repositories.ProdutoRepository;
+import com.lanchenlayer.entities.Estado;
+import com.lanchenlayer.repositories.EstadoRepository;
 import com.lanchenlayer.services.EstadoService;
 
 import java.util.ArrayList;
 
-public class ProdutoApplication {
-    private ProdutoRepository produtoRepository;
+public class EstadoApplication {
+    private EstadoRepository estadoRepository;
     private EstadoService estadoService;
 
-    public ProdutoApplication(ProdutoRepository produtoRepository, EstadoService estadoService) {
-        this.produtoRepository = produtoRepository;
+    public EstadoApplication(EstadoRepository estadoRepository, EstadoService estadoService) {
+        this.estadoRepository = estadoRepository;
         this.estadoService = estadoService;
     }
 
-    public void adicionar(Produto produto) {
-        this.produtoRepository.adicionar(produto);
+    public void adicionar(Estado produto) {
+        this.estadoRepository.adicionar(produto);
         this.estadoService.salvarImagem(produto);
     }
 
-    public void adicionarSoImagem(Produto produto) {
+    public void adicionarSoImagem(Estado produto) {
         this.estadoService.salvarImagem(produto);
     }
 
     public void remover(int DDD) {
-        this.produtoRepository.remover(DDD);
+        this.estadoRepository.remover(DDD);
         this.estadoService.removerImagem(DDD);
     }
 
-    public Produto buscarPorDDD(int DDD) {
-        return this.produtoRepository.buscarPorDDD(DDD);
+    public Estado buscarPorDDD(int DDD) {
+        return this.estadoRepository.buscarPorDDD(DDD);
     }
 
-    public ArrayList<Produto> buscarTodos() {
-        return this.produtoRepository.buscarTodos();
+    public ArrayList<Estado> buscarTodos() {
+        return this.estadoRepository.buscarTodos();
     }
 
-    public void atualizarProduto(int DDD, Produto produto) {
-        this.produtoRepository.atualizarProduto(DDD, produto);
+    public void atualizarProduto(int DDD, Estado produto) {
+        this.estadoRepository.atualizarProduto(DDD, produto);
         this.estadoService.atualizarImagem(produto);
     }
 }

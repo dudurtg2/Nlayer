@@ -1,35 +1,34 @@
 package com.lanchenlayer.facade;
 
-import com.lanchenlayer.applications.ProdutoApplication;
-import com.lanchenlayer.entities.Produto;
-import com.lanchenlayer.repositories.ProdutoRepository;
+import com.lanchenlayer.applications.EstadoApplication;
+import com.lanchenlayer.entities.Estado;
 
 import java.util.ArrayList;
 
-public class ProdutoFacade {
-    private ProdutoApplication produtoApplication;
+public class EstadoFacade {
+    private EstadoApplication estadoApplication;
 
-    public ProdutoFacade(ProdutoApplication produtoApplication) {
-        this.produtoApplication = produtoApplication;
+    public EstadoFacade(EstadoApplication estadoApplication) {
+        this.estadoApplication = estadoApplication;
     }
 
-    public void adicionar(Produto produto) {
-        this.produtoApplication.adicionar(produto);
+    public void adicionar(Estado produto) {
+        this.estadoApplication.adicionar(produto);
     }
 
     public void remover(int DDD) {
-        this.produtoApplication.remover(DDD);
+        this.estadoApplication.remover(DDD);
     }
 
-    public Produto buscarPorDDD(int DDD) {
-        return this.produtoApplication.buscarPorDDD(DDD);
+    public Estado buscarPorDDD(int DDD) {
+        return this.estadoApplication.buscarPorDDD(DDD);
     }
 
-    public ArrayList<Produto> buscarTodos() {
-        return this.produtoApplication.buscarTodos();
+    public ArrayList<Estado> buscarTodos() {
+        return this.estadoApplication.buscarTodos();
     }
 
-    public void atualizarProduto(int DDD, Produto produto) {
-        this.produtoApplication.atualizarProduto(DDD, produto);
+    public void atualizarProduto(int DDD, Estado produto) {
+        this.estadoApplication.atualizarProduto(DDD, produto);
     }
 }

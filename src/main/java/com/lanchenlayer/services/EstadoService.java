@@ -1,6 +1,6 @@
 package com.lanchenlayer.services;
 
-import com.lanchenlayer.entities.Produto;
+import com.lanchenlayer.entities.Estado;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -20,7 +20,7 @@ public class EstadoService {
         return (dotIndex == -1) ? "No extension" : fileName.substring(dotIndex + 1);
     }
 
-    public boolean salvarImagem(Produto produto) {
+    public boolean salvarImagem(Estado produto) {
         Path path = Paths.get(produto.getImagem());
 
         Path pastaDestino = Paths.get(String.format("%s%d.%s", caminhoDestino, produto.getDDD(), getFileExtension(produto.getImagem())));
@@ -58,7 +58,7 @@ public class EstadoService {
         }
     }
 
-    public void atualizarImagem(Produto produto) {
+    public void atualizarImagem(Estado produto) {
         removerImagem(produto.getDDD());
         salvarImagem(produto);
     }

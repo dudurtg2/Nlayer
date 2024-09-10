@@ -1,13 +1,13 @@
 package com.lanchenlayer.repositories;
 
-import com.lanchenlayer.entities.Produto;
+import com.lanchenlayer.entities.Estado;
 
 import java.util.ArrayList;
 
-public class ProdutoRepository {
-    private ArrayList<Produto> produtos = new ArrayList<Produto>();
+public class EstadoRepository {
+    private ArrayList<Estado> produtos = new ArrayList<Estado>();
 
-    public void adicionar(Produto produto) {
+    public void adicionar(Estado produto) {
         produtos.add(produto);
     }
 
@@ -15,22 +15,22 @@ public class ProdutoRepository {
         produtos.removeIf(produto -> produto.getDDD() == DDD);
     }
 
-    private Produto filtrarProduto(int DDD) {
+    private Estado filtrarProduto(int DDD) {
         return produtos.stream().filter(p -> p.getDDD() == DDD).findFirst().get();
     }
 
-    public Produto buscarPorDDD(int DDD) {
-        Produto produtoInDb = filtrarProduto(DDD);
+    public Estado buscarPorDDD(int DDD) {
+        Estado produtoInDb = filtrarProduto(DDD);
 
         return produtoInDb;
     }
 
-    public ArrayList<Produto> buscarTodos() {
+    public ArrayList<Estado> buscarTodos() {
         return produtos;
     }
 
-    public void atualizarProduto(int DDD, Produto produto) {
-        Produto produtoInDb = filtrarProduto(DDD);
+    public void atualizarProduto(int DDD, Estado produto) {
+        Estado produtoInDb = filtrarProduto(DDD);
 
         produtoInDb.setEstado(produto.getEstado());
         produtoInDb.setImagem(produto.getImagem());

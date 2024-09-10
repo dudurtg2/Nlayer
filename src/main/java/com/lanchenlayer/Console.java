@@ -1,10 +1,10 @@
 package com.lanchenlayer;
 
-import com.lanchenlayer.applications.ProdutoApplication;
-import com.lanchenlayer.entities.Produto;
-import com.lanchenlayer.facade.ProdutoFacade;
-import com.lanchenlayer.repositories.ProdutoRepository;
-import com.lanchenlayer.services.ProdutoService;
+import com.lanchenlayer.applications.EstadoApplication;
+import com.lanchenlayer.entities.Estado;
+import com.lanchenlayer.facade.EstadoFacade;
+import com.lanchenlayer.repositories.EstadoRepository;
+import com.lanchenlayer.services.EstadoService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,37 +13,37 @@ import java.util.Scanner;
  * Hello world!
  */
 public class Console {
-    private static ProdutoRepository produtoRepository;
-    private static ProdutoService produtoService;
-    private static ProdutoApplication produtoApplication;
-    private static ProdutoFacade produtoFacade;
+    private static EstadoRepository estadoRepository;
+    private static EstadoService estadoService;
+    private static EstadoApplication estadoApplication;
+    private static EstadoFacade estadoFacade;
     private static Scanner scanner;
 
     public static void resolverDependencias() {
-        produtoRepository = new ProdutoRepository();
-        produtoService = new ProdutoService();
-        produtoApplication = new ProdutoApplication(produtoRepository, produtoService);
-        produtoFacade = new ProdutoFacade(produtoApplication);
+        estadoRepository = new EstadoRepository();
+        estadoService = new EstadoService();
+        estadoApplication = new EstadoApplication(estadoRepository, estadoService);
+        estadoFacade = new EstadoFacade(estadoApplication);
         scanner = new Scanner(System.in);
     }
 
     public static void inicializarProdutos() {
-        produtoFacade.adicionar(new Produto(61, "Brasilia", "C:\\Users\\aluno\\imagens\\Brasilia.jpg"));
-        produtoFacade.adicionar(new Produto(71, "Salvador", "C:\\Users\\aluno\\imagens\\Salvador.jpg"));
-        produtoFacade.adicionar(new Produto(11, "São Paulo", "C:\\Users\\aluno\\imagens\\SaoPaulo.jpg"));
-        produtoFacade.adicionar(new Produto(21, "Rio de Janeiro", "C:\\Users\\aluno\\imagens\\RioDeJaneiro.jpg"));
-        produtoFacade.adicionar(new Produto(32, "Juiz de Fora", "C:\\Users\\aluno\\imagens\\JuizDeFora.jpg"));
-        produtoFacade.adicionar(new Produto(19, "Campinas", "C:\\Users\\aluno\\imagens\\Campinas.jpg"));
-        produtoFacade.adicionar(new Produto(27, "Vitoria", "C:\\Users\\aluno\\imagens\\Vitoria.jpg"));
-        produtoFacade.adicionar(new Produto(31, "Belo Horizonte", "C:\\Users\\aluno\\imagens\\BeloHorizonte.jpg"));
+        estadoFacade.adicionar(new Estado(61, "Brasilia", "C:\\Users\\aluno\\imagens\\Brasilia.jpg"));
+        estadoFacade.adicionar(new Estado(71, "Salvador", "C:\\Users\\aluno\\imagens\\Salvador.jpg"));
+        estadoFacade.adicionar(new Estado(11, "São Paulo", "C:\\Users\\aluno\\imagens\\SaoPaulo.jpg"));
+        estadoFacade.adicionar(new Estado(21, "Rio de Janeiro", "C:\\Users\\aluno\\imagens\\RioDeJaneiro.jpg"));
+        estadoFacade.adicionar(new Estado(32, "Juiz de Fora", "C:\\Users\\aluno\\imagens\\JuizDeFora.jpg"));
+        estadoFacade.adicionar(new Estado(19, "Campinas", "C:\\Users\\aluno\\imagens\\Campinas.jpg"));
+        estadoFacade.adicionar(new Estado(27, "Vitoria", "C:\\Users\\aluno\\imagens\\Vitoria.jpg"));
+        estadoFacade.adicionar(new Estado(31, "Belo Horizonte", "C:\\Users\\aluno\\imagens\\BeloHorizonte.jpg"));
         
 
     }
 
     public static void listarProdutos() {
-        System.out.println("Id    |    Descrição   |   Valor");
+        System.out.println("DDD    |    Estado");
 
-        ArrayList<Produto> produtos = produtoFacade.buscarTodos();
+        ArrayList<Estado> produtos = estadoFacade.buscarTodos();
 
         produtos.forEach(c -> {
             System.out.println(c.getDDD() + "   |     " + c.getEstado());
@@ -60,8 +60,8 @@ public class Console {
         System.out.println("Informe o caminho da imagem da bandeira: ");
         String imagem = scanner.next();
 
-        Produto produto = new Produto(id, estado, imagem);
-        produtoFacade.adicionar(produto);
+        Estado produto = new Estado(id, estado, imagem);
+        estadoFacade.adicionar(produto);
     }
 
     public static void exibirMenu() {
@@ -83,7 +83,7 @@ public class Console {
         int id = scanner.nextInt();
 
 
-        System.out.println("Estado: " + produtoFacade.buscarPorDDD(id).getEstado());
+        System.out.println("Estado: " + estadoFacade.buscarPorDDD(id).getEstado());
     }
 
     private static void atualizarProduto() {
@@ -96,15 +96,15 @@ public class Console {
         System.out.println("Informe o novo caminho da imagem do produto: ");
         String imagem = scanner.next();
 
-        Produto produto = new Produto(DDD, descricao,  imagem);
-        produtoFacade.atualizarProduto(DDD, produto);
+        Estado produto = new Estado(DDD, descricao,  imagem);
+        estadoFacade.atualizarProduto(DDD, produto);
     }
 
     public static void removerProduto() {
         System.out.println("Informe o DDD do estado que deseja remover: ");
         int id = scanner.nextInt();
 
-        produtoFacade.remover(id);
+        estadoFacade.remover(id);
     }
 
     public static void rodar() {

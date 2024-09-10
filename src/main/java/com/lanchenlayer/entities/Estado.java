@@ -1,6 +1,6 @@
 package com.lanchenlayer.entities;
 
-public class Produto {
+public class Estado {
 
     private int DDD;
     private String estado;
@@ -30,7 +30,7 @@ public class Produto {
         this.imagem = imagem;
     }
 
-    public Produto(int DDD, String estado, String imagem) {
+    public Estado(int DDD, String estado, String imagem) {
         this.DDD = DDD;
         this.estado = estado;
         this.imagem = imagem;
