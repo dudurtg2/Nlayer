@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 
-public class ProdutoService {
+public class EstadoService {
     private String caminhoDestino = "C:\\Users\\aluno\\LancheNLayer\\src\\main\\resources\\images\\";
 
     public static String getFileExtension(String filePath) {

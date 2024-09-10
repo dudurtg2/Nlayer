@@ -2,31 +2,31 @@ package com.lanchenlayer.applications;
 
 import com.lanchenlayer.entities.Produto;
 import com.lanchenlayer.repositories.ProdutoRepository;
-import com.lanchenlayer.services.ProdutoService;
+import com.lanchenlayer.services.EstadoService;
 
 import java.util.ArrayList;
 
 public class ProdutoApplication {
     private ProdutoRepository produtoRepository;
-    private ProdutoService produtoService;
+    private EstadoService estadoService;
 
-    public ProdutoApplication(ProdutoRepository produtoRepository, ProdutoService produtoService) {
+    public ProdutoApplication(ProdutoRepository produtoRepository, EstadoService estadoService) {
         this.produtoRepository = produtoRepository;
-        this.produtoService = produtoService;
+        this.estadoService = estadoService;
     }
 
     public void adicionar(Produto produto) {
         this.produtoRepository.adicionar(produto);
-        this.produtoService.salvarImagem(produto);
+        this.estadoService.salvarImagem(produto);
     }
 
     public void adicionarSoImagem(Produto produto) {
-        this.produtoService.salvarImagem(produto);
+        this.estadoService.salvarImagem(produto);
     }
 
     public void remover(int DDD) {
         this.produtoRepository.remover(DDD);
-        this.produtoService.removerImagem(DDD);
+        this.estadoService.removerImagem(DDD);
     }
 
     public Produto buscarPorDDD(int DDD) {
@@ -39,6 +39,6 @@ public class ProdutoApplication {
 
     public void atualizarProduto(int DDD, Produto produto) {
         this.produtoRepository.atualizarProduto(DDD, produto);
-        this.produtoService.atualizarImagem(produto);
+        this.estadoService.atualizarImagem(produto);
     }
 }
